@@ -19,8 +19,8 @@ router.post('/api/notes', (req, res) => {
 });
 
 router.delete('/api/notes/:id', (req, res) => {
-    let notesId = req.params.id;
     let notes = fs.readFileSync("db/db.json");
+    let notesId = req.params.id;
     notes = JSON.parse(notes);
     let entireNote = notes.filter(note => note.id !== notesId);
     fs.writeFileSync("db/db.json", JSON.stringify(entireNote));
